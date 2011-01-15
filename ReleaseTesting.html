@@ -1,0 +1,736 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.3" />
+<title>Release Testing</title>
+<style type="text/css">
+/* Sans-serif font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+div#toctitle,
+span#author, span#revnumber, span#revdate, span#revremark,
+div#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+/* Serif font. */
+div.sectionbody {
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+/* Monospace font. */
+tt {
+  font-size: inherit;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  font-size: inherit;
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+}
+
+div#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes();}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Release Testing</h1>
+<span id="author">Eric Merritt</span><br />
+<span id="email"><tt>&lt;<a href="mailto:ericbmerritt@gmail.com">ericbmerritt@gmail.com</a>&gt;</tt></span><br />
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The release testing system for sinan drives sinan from the command
+line just like a user would. We do this so that we can get complete
+end to end testing of all aspects of sinan. This is another level of
+testing above UnitTesting and they should not be confused.</p></div>
+<div class="paragraph"><p>The <a href="ReleaseTesting.html">ReleaseTesting</a> system is built in python and based around python&#8217;s
+pexpect module. This is very similar to expect and used in a similar
+way. The <a href="http://www.noah.org/wiki/pexpect">pexpect module</a> is well documented and
+you should look to that documentation for details on using pexpect.</p></div>
+<div class="paragraph"><p>There are a few things you need to run the release testing
+framework. You will need the following.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://www.noah.org/wiki/pexpect">pexpect</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://somethingaboutorange.com/mrl/projects/nose/1.0.0/">nose</a>
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>To run the tests simple do the following in &lt;sinan-root&gt;/support/test.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>nosetests -s <span style="color: #990000">.</span>/tests</tt></pre></div></div>
+<div class="paragraph"><p>You may also run individual tests by running the following command.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>nosetests -s <span style="color: #990000">.</span>/tests<span style="color: #990000">/&lt;</span>test-file<span style="color: #990000">&gt;.</span>py</tt></pre></div></div>
+<div class="paragraph"><p>This can be very helpful during development.</p></div>
+<div class="paragraph"><p>Unfortunately at the moment its important that you run the tests from
+the test directory. Later on we might expand this to be a bit more
+flexable.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_python">Why Python?</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>One of the big questions that comes up is why python and not Erlang
+for the release testing. The answer to this is fairly simple and comes
+from the unix axiom of the right tool for the right job. Python has
+the pexpect module which is designed to drive command line
+programs. Erlang does not have this module nor modules similar to
+this. Not only that, but Python has tighter integration with the
+system the Erlang does.</p></div>
+<div class="paragraph"><p>This doesn&#8217;t make Python better then Erlang or Erlang better then
+python, it simply means that for this particular path Python is a
+better tool then Erlang. For many other tasks Erlang is a better
+tool. It all depends very much on the task at hand.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_framework">Test Framework</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The testing framework makes use of the link:&lt;link to python
+unittest&gt;[Python unittest module] and the nose testing infrastructure,
+along with a convience module called sin_testing provided
+here. Individual test files are expected to go into the tests
+directory. Each file is also expected to be completely self contained,
+that is one test file may not depend on other test files. You may, of
+course, share code between tests, but that shared code should go into
+the sin_testing library and then called from the clients for that code.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sin_testing">sin_testing</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The sin_testing library is designed specificially for supporting the
+testing of sinan. To that end it provides many convienience functions
+for setting up and driving sinan. Lets go through each one and how
+they will help you write tests.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appdesc_class">AppDesc Class</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The app desc class is a project descriptor that is used to describe
+things that need to be generated and built to the smoketest class. At
+the moment it is just a container for values as you can see. The only
+thing to be aware of is the app_names. App names is a list of
+applications that you would like to be generated in the project.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">class</span></span> <span style="font-weight: bold"><span style="color: #000000">AppDesc</span></span><span style="color: #990000">(</span>object<span style="color: #990000">):</span>
+<span style="font-weight: bold"><span style="color: #0000FF">def</span></span> <span style="font-weight: bold"><span style="color: #000000">__init__</span></span><span style="color: #990000">(</span>self<span style="color: #990000">,</span>
+user_name<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+email<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+copyright_holder<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+project_name<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+project_version<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+app_names<span style="color: #990000">=</span>None<span style="color: #990000">):</span>
+self<span style="color: #990000">.</span>user_name <span style="color: #990000">=</span> user_name
+self<span style="color: #990000">.</span>email <span style="color: #990000">=</span> email
+self<span style="color: #990000">.</span>copyright_holder <span style="color: #990000">=</span> copyright_holder
+self<span style="color: #990000">.</span>project_name <span style="color: #990000">=</span> project_name
+self<span style="color: #990000">.</span>project_version <span style="color: #990000">=</span> project_version
+self<span style="color: #990000">.</span>app_names <span style="color: #990000">=</span> app_names
+</tt></pre></div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_smoketest_class">SmokeTest Class</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The smoketest class is a subclass of unittest.TestCase that provides a
+few nice features for sinan tests. Setup function creates a new
+temporary directory and then changes the current directory to that
+directory. The teardown function does the reverse of that procedure.</p></div>
+<div class="paragraph"><p>This class also provides a few helper functions to ensure that files
+that you expect to exist exist. These functions are assert_dirs_exist
+and assert_files_exist.</p></div>
+<div class="paragraph"><p>The first argument to both of these functions is the base directory for the
+checks. The rest of the arguments are directories or files to check for
+in the context of the base directory.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>self<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">assert_dirs_exist</span></span><span style="color: #990000">(</span>projdir<span style="color: #990000">,</span>
+<span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span>
+<span style="color: #FF0000">"config"</span><span style="color: #990000">,</span>
+<span style="color: #FF0000">"lib"</span><span style="color: #990000">)</span>
+
+
+self<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">assert_files_exist</span></span><span style="color: #990000">(</span>projdir<span style="color: #990000">,</span>
+<span style="color: #990000">[</span><span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span> a<span style="color: #990000">.</span>project_name<span style="color: #990000">],</span>
+<span style="color: #990000">[</span><span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"erlware_release_start_helper"</span><span style="color: #990000">],</span>
+<span style="color: #990000">[</span><span style="color: #FF0000">"config"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"sys.config"</span><span style="color: #990000">],</span>
+<span style="color: #FF0000">"sinan.cfg"</span><span style="color: #990000">)</span>
+</tt></pre></div></div>
+<div class="paragraph"><p>In the first example we are checking if a set of directories exist in
+the project directory. In the second example we are checking to see if
+the files exist. Notice the use of lists here. When these functions
+see a list argument the automatically convert them to paths with the
+correct seperator for the platform you are running on. This makes it
+easy to check large numbers of files or directories. If the file or
+directory doesn&#8217;t exist then an error is asserted.</p></div>
+<div class="sect2">
+<h3 id="_do_lt_task_gt_functions">do_&lt;task&gt; functions</h3>
+<div class="paragraph"><p>There are several functions for running standard sinan tasks as
+well. These are, do_clean, do_t, do_release, do_dist.</p></div>
+<div class="paragraph"><p>These run the task named at the end in the current directory, with the
+exception of the do_t which runs the test task. The do_t is a hack to
+get around test autodetection in unittest.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_do_run">do_run</h3>
+<div class="paragraph"><p>The do run function is the thing you will use the most. It will take
+an appdesc and run build, test, relaese, and dist. In all cases it
+will test the output and make sure it ran correctly. You may then
+customize the generated app to your wishes. A good example of this is
+the release_test.py file.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_sinan_decorator">sinan decorator</h3>
+<div class="paragraph"><p>The sinan decorator allows you to declare that your function runs a
+specific sinan task. The decorator spawns the sinan currently in
+development passes the spawned process to the function that is being
+decorated. For example, the following code lets we want to execute a
+test that needs to run sinan gen. We could simply do it as follows.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>@sin_testing<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">sinan</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"gen"</span><span style="color: #990000">)</span>
+<span style="font-weight: bold"><span style="color: #0000FF">def</span></span> <span style="font-weight: bold"><span style="color: #000000">my_test_function</span></span><span style="color: #990000">(</span>self<span style="color: #990000">,</span> child<span style="color: #990000">):</span>
+<span style="font-style: italic"><span style="color: #9A1900">""" Here is where we would do stuff"""</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">pass</span></span></tt></pre></div></div>
+<div class="paragraph"><p>When the function is called the sinan decorator will run the gen
+command, passing the pexpect child object to the function
+decorated. The function can then do anything it would like with that
+child using the pexpect api.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2011-01-14 20:26:12 CST
+</div>
+</div>
+</body>
+</html>
