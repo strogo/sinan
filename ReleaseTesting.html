@@ -567,14 +567,14 @@ framework. You will need the following.</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>nosetests -s <span style="color: #990000">.</span>/tests</tt></pre></div></div>
+<pre><tt>  nosetests -s <span style="color: #990000">.</span>/tests</tt></pre></div></div>
 <div class="paragraph"><p>You may also run individual tests by running the following command.</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>nosetests -s <span style="color: #990000">.</span>/tests<span style="color: #990000">/&lt;</span>test-file<span style="color: #990000">&gt;.</span>py</tt></pre></div></div>
+<pre><tt>  nosetests -s <span style="color: #990000">.</span>/tests<span style="color: #990000">/&lt;</span>test-file<span style="color: #990000">&gt;.</span>py</tt></pre></div></div>
 <div class="paragraph"><p>This can be very helpful during development.</p></div>
 <div class="paragraph"><p>Unfortunately at the moment its important that you run the tests from
 the test directory. Later on we might expand this to be a bit more
@@ -633,19 +633,19 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-weight: bold"><span style="color: #0000FF">class</span></span> <span style="font-weight: bold"><span style="color: #000000">AppDesc</span></span><span style="color: #990000">(</span>object<span style="color: #990000">):</span>
-<span style="font-weight: bold"><span style="color: #0000FF">def</span></span> <span style="font-weight: bold"><span style="color: #000000">__init__</span></span><span style="color: #990000">(</span>self<span style="color: #990000">,</span>
-user_name<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
-email<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
-copyright_holder<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
-project_name<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
-project_version<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
-app_names<span style="color: #990000">=</span>None<span style="color: #990000">):</span>
-self<span style="color: #990000">.</span>user_name <span style="color: #990000">=</span> user_name
-self<span style="color: #990000">.</span>email <span style="color: #990000">=</span> email
-self<span style="color: #990000">.</span>copyright_holder <span style="color: #990000">=</span> copyright_holder
-self<span style="color: #990000">.</span>project_name <span style="color: #990000">=</span> project_name
-self<span style="color: #990000">.</span>project_version <span style="color: #990000">=</span> project_version
-self<span style="color: #990000">.</span>app_names <span style="color: #990000">=</span> app_names
+    <span style="font-weight: bold"><span style="color: #0000FF">def</span></span> <span style="font-weight: bold"><span style="color: #000000">__init__</span></span><span style="color: #990000">(</span>self<span style="color: #990000">,</span>
+                 user_name<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+                 email<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+                 copyright_holder<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+                 project_name<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+                 project_version<span style="color: #990000">=</span>None<span style="color: #990000">,</span>
+                 app_names<span style="color: #990000">=</span>None<span style="color: #990000">):</span>
+        self<span style="color: #990000">.</span>user_name <span style="color: #990000">=</span> user_name
+        self<span style="color: #990000">.</span>email <span style="color: #990000">=</span> email
+        self<span style="color: #990000">.</span>copyright_holder <span style="color: #990000">=</span> copyright_holder
+        self<span style="color: #990000">.</span>project_name <span style="color: #990000">=</span> project_name
+        self<span style="color: #990000">.</span>project_version <span style="color: #990000">=</span> project_version
+        self<span style="color: #990000">.</span>app_names <span style="color: #990000">=</span> app_names
 </tt></pre></div></div>
 </div>
 </div>
@@ -667,17 +667,17 @@ in the context of the base directory.</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>self<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">assert_dirs_exist</span></span><span style="color: #990000">(</span>projdir<span style="color: #990000">,</span>
-<span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span>
-<span style="color: #FF0000">"config"</span><span style="color: #990000">,</span>
-<span style="color: #FF0000">"lib"</span><span style="color: #990000">)</span>
+<pre><tt>        self<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">assert_dirs_exist</span></span><span style="color: #990000">(</span>projdir<span style="color: #990000">,</span>
+                               <span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span>
+                               <span style="color: #FF0000">"config"</span><span style="color: #990000">,</span>
+                               <span style="color: #FF0000">"lib"</span><span style="color: #990000">)</span>
 
 
-self<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">assert_files_exist</span></span><span style="color: #990000">(</span>projdir<span style="color: #990000">,</span>
-<span style="color: #990000">[</span><span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span> a<span style="color: #990000">.</span>project_name<span style="color: #990000">],</span>
-<span style="color: #990000">[</span><span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"erlware_release_start_helper"</span><span style="color: #990000">],</span>
-<span style="color: #990000">[</span><span style="color: #FF0000">"config"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"sys.config"</span><span style="color: #990000">],</span>
-<span style="color: #FF0000">"sinan.cfg"</span><span style="color: #990000">)</span>
+        self<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">assert_files_exist</span></span><span style="color: #990000">(</span>projdir<span style="color: #990000">,</span>
+                                <span style="color: #990000">[</span><span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span> a<span style="color: #990000">.</span>project_name<span style="color: #990000">],</span>
+                                <span style="color: #990000">[</span><span style="color: #FF0000">"bin"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"erlware_release_start_helper"</span><span style="color: #990000">],</span>
+                                <span style="color: #990000">[</span><span style="color: #FF0000">"config"</span><span style="color: #990000">,</span> <span style="color: #FF0000">"sys.config"</span><span style="color: #990000">],</span>
+                                <span style="color: #FF0000">"sinan.cfg"</span><span style="color: #990000">)</span>
 </tt></pre></div></div>
 <div class="paragraph"><p>In the first example we are checking if a set of directories exist in
 the project directory. In the second example we are checking to see if
@@ -714,10 +714,10 @@ test that needs to run sinan gen. We could simply do it as follows.</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>@sin_testing<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">sinan</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"gen"</span><span style="color: #990000">)</span>
-<span style="font-weight: bold"><span style="color: #0000FF">def</span></span> <span style="font-weight: bold"><span style="color: #000000">my_test_function</span></span><span style="color: #990000">(</span>self<span style="color: #990000">,</span> child<span style="color: #990000">):</span>
-<span style="font-style: italic"><span style="color: #9A1900">""" Here is where we would do stuff"""</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">pass</span></span></tt></pre></div></div>
+<pre><tt>  @sin_testing<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">sinan</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"gen"</span><span style="color: #990000">)</span>
+  <span style="font-weight: bold"><span style="color: #0000FF">def</span></span> <span style="font-weight: bold"><span style="color: #000000">my_test_function</span></span><span style="color: #990000">(</span>self<span style="color: #990000">,</span> child<span style="color: #990000">):</span>
+<span style="font-style: italic"><span style="color: #9A1900">      """ Here is where we would do stuff"""</span></span>
+      <span style="font-weight: bold"><span style="color: #0000FF">pass</span></span></tt></pre></div></div>
 <div class="paragraph"><p>When the function is called the sinan decorator will run the gen
 command, passing the pexpect child object to the function
 decorated. The function can then do anything it would like with that
@@ -729,7 +729,7 @@ child using the pexpect api.</p></div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2011-01-14 20:26:12 CST
+Last updated 2011-01-17 19:54:26 CST
 </div>
 </div>
 </body>
